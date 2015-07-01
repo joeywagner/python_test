@@ -12,7 +12,7 @@ for i in [5,4,3,2,1]:
 
 print 'Blast off'
 
-
+#Simple definite loop
 friends = ['joseph','glenn','sally']
 
 for friend in friends:
