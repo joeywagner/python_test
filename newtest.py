@@ -1,13 +1,19 @@
-fname = raw_input("Enter file name: ")
-fh = open(fname)
-lst = list()
-for line in fh:
-	tab = line.rstrip('\n')
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+counts = dict()
+text = handle.read()
+words = text.split()
 
-	lst.append(tab)
+counts = dict()
+for word in words:
+	counts[word] = counts.get(word,0) + 1
 
-print lst
-for i in lst:
-	print i.split()
+bigcount = None
+bigword = None
+for word,count in counts.items():
+	if bigcount is None or count > bigcount:
+		bigword = word
+		bigcount = count
 
-fh.close()
+print bigword,bigcount

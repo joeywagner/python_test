@@ -1,15 +1,24 @@
 fname = raw_input("Enter file name: ")
 fh = open(fname)
 lst = list()
-mylist = []
-for line in fh:
-	f = line.rstrip('\n')
-	e = f.split()
-	print e
+for line in fh.read().split():
+	
+	if line not in lst:
+		lst.append(line)
+
+
+lst.sort()
+
+print lst
 
 	
-#	lst.append(fh)
-#print lst
+	
+	
+	
+
+
+	
+
 
 
 
