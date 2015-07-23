@@ -39,9 +39,55 @@ print tups
 q = (0,1,2) < (5,1,2)
 print q
 
+#Sorting lists of tuples
+
+d = {'a':10, 'b':1, 'c':22}
+t = d.items()
+print t
+
+t.sort()
+print t
+
+#Using sorted()
+d = {'a':10, 'b':1, 'c':22}
+d.items()
+t = sorted(d.items())
+print t
+
+for k, v in sorted(d.items()):
+	print k, v
+
+#Sort by values instead of key
+c = {'a':10, 'b':1, 'c':22}
+tmp = list()
+for k, v in c.items():
+	tmp.append( (v,k) )
+
+print tmp
+tmp.sort(reverse=True)
+print tmp
+
+#Top ten most common words
+fhand = open('romeo.txt')
+counts = dict()
+for line in fhand:
+	words = line.split()
+	for word in words:
+		counts[word] = counts.get(word, 0) + 1
+
+lst = list()
+for key, val in counts.items():
+	lst.append( (val, key) )
+
+lst.sort(reverse=True)
+
+for val, key in lst[:10] :
+	print key, val
 
 
-
+#Even shoter version
+c = {'a':10, 'b':1, 'c':22}
+print sorted ( [ (v,k) for k,v in c.items() ] )
 
 
 

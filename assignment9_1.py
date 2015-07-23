@@ -1,23 +1,18 @@
-fname = raw_input("Enter file name: ")
-if len(fname) < 1 : fname = "mbox-short.txt"
-fh = open(fname)
-count = 0
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
 counts = dict()
-for line in fh:
-	line = line.rstrip()
-	words = line.split()
-	if words ==[] :continue
-	if words[0] !='From':continue
-	counts[words] = counts.get(words,0) + 1
-		
-	print words[1]
-
-	
-		#counts[word] = counts.get(word,0) + 1
-		#print "bang"
-
-	
-
-	
-
-#print "There were", count, "lines in t e file with From as the first word"
+for line in handle:
+    words = line.split()
+    if len(words) < 2 : continue
+    if words[0] != "From" : continue
+    email = words[1]
+    #print email
+    counts[email] = counts.get(email,0) + 1
+bigcount = None
+bigname = None
+for name,count in counts.items():
+    if bigname is None or count > bigcount:
+        bigname = name
+        bigcount = count
+print bigname, bigcount
